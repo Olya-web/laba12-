@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { API } from './helpers/API';
+import { AuthContext } from './helpers/auth.context';
 
 export const Login = () => {
     const [loginForm, setLoginForm] = useState({ name: '', password: '' });
+    const [isAuth, Login] = useContext(AuthContext);
     const submitForm = async (e) => {
         e.preventDefault();
         const r = await API.post('auth/sign-in', loginForm);
-        console.log('Cigan-log: submitForm -> r', !!r.data);
+        if (!!r.data) Login();
         setLoginForm({ name: '', password: '' });
     };
     return (

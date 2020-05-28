@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { API } from './helpers/API';
+import { Link } from 'react-router-dom';
 
 export const Register = () => {
     const [registerForm, setRegisterForm] = useState({
@@ -15,6 +16,8 @@ export const Register = () => {
     return (
         <div>
             <p>Страница регистрации</p>
+            <Link to="/">На главную</Link>
+            <Link to="/login">Логин</Link>
             <form onSubmit={(e) => submitForm(e)}>
                 <input
                     type="text"
