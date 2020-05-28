@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { API } from './helpers/API';
 
 export const Register = () => {
     const [registerForm, setRegisterForm] = useState({
         name: '',
         password: '',
     });
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault();
-        console.log('Cigan-log: submitForm -> registerForm', registerForm);
+        const r = await API.post('auth/sign-up', registerForm);
         setRegisterForm({ name: '', password: '' });
     };
     return (
