@@ -12,15 +12,7 @@ export class AuthService {
             const usersFile = JSON.parse(
                 fs.readFileSync('src/auth/users.json').toString(),
             );
-            console.log(
-                'Cigan-log: AuthService -> signUp -> usersFile',
-                usersFile,
-            );
             usersFile.push(credentials);
-            console.log(
-                'Cigan-log: AuthService -> signUp -> usersFile',
-                JSON.stringify(usersFile),
-            );
             fs.writeFile(
                 'src/auth/users.json',
                 JSON.stringify(usersFile),
@@ -34,5 +26,16 @@ export class AuthService {
             );
             return true;
         } else return false;
+    }
+    signIn(credentials) {
+        const usersFile = JSON.parse(
+            fs.readFileSync('src/auth/users.json').toString(),
+        );
+        return usersFile.find(item => {
+            return (
+                item.name === credentials.name &&
+                item.password === credentials.password
+            );
+        });
     }
 }

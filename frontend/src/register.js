@@ -9,6 +9,7 @@ export const Register = () => {
     const submitForm = async (e) => {
         e.preventDefault();
         const r = await API.post('auth/sign-up', registerForm);
+        console.log('Cigan-log: submitForm -> r', r);
         setRegisterForm({ name: '', password: '' });
     };
     return (
