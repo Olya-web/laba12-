@@ -2,6 +2,9 @@
 /dist
 /node_modules
 
+# USERS file
+/src/auth/users.json
+
 # Logs
 logs
 *.log
